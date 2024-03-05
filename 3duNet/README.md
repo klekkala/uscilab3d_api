@@ -42,9 +42,9 @@ Scipy
 ## Quickly Start
 ### 1) LITS2017 dataset preprocessing: 
 1. Download dataset from google drive: [Liver Tumor Segmentation Challenge.](https://drive.google.com/drive/folders/0B0vscETPGI1-Q1h1WFdEM2FHSUE)  
-Or from my share: https://pan.baidu.com/s/1WgP2Ttxn_CV-yRT4UyqHWw 
-Extraction code：**hfl8** (The dataset consists of two parts: batch1 and batch2)  
-2. Then you need decompress and merge batch1 and batch2 into one folder. It is recommended to use 20 samples(27\~46) of the LiTS dataset as the testset
+Or from my kaggle(recommended because the structure of the data is set and kaggle download speed is fast):
+kaggle datasets download -d lrpeixc/data28-130
+3. Then you need decompress and merge batch1 and batch2 into one folder. It is recommended to use 20 samples(27\~46) of the LiTS dataset as the testset
  and 111 samples(0\~26 and 47\~131) as the trainset. Please put the volume data and segmentation labels of trainset and testset into different local folders, 
 such as:  
 ```
