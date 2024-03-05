@@ -43,7 +43,10 @@ Scipy
 ### 1) LITS2017 dataset preprocessing: 
 1. Download dataset from google drive: [Liver Tumor Segmentation Challenge.](https://drive.google.com/drive/folders/0B0vscETPGI1-Q1h1WFdEM2FHSUE)  
 Or from my kaggle(recommended because the structure of the data is set and kaggle download speed is fast):
-kaggle datasets download -d lrpeixc/data28-130
+use following command to download (15.5GB):
+kaggle datasets download -d lrpeixc/3dunet-dataset
+Note that if you download the dataset from the kaggle url above, skip step 2 and 3, go to step 4
+
 3. Then you need decompress and merge batch1 and batch2 into one folder. It is recommended to use 20 samples(27\~46) of the LiTS dataset as the testset
  and 111 samples(0\~26 and 47\~131) as the trainset. Please put the volume data and segmentation labels of trainset and testset into different local folders, 
 such as:  
@@ -93,6 +96,9 @@ If nothing goes wrong, you can see the following files in the dir `./fixed_data`
 ```  
 ---
 ### 2) Training 3DUNet
+Note that When training, we need to change ResUNet.py lines between 134 and 164 under folder 'models', change nn.Upsample(scale_factor=(1, x, x) to nn.Upsample(scale_factor=(1, 0.5x, 0.5x)。
+The reason behind this is that the code was designed for two gpu, we assume you are using 1 gpu machine.
+
 1. Firstly, you should change the some parameters in `config.py`,especially, please set `--dataset_path` to `./fixed_data`  
 All parameters are commented in the file `config.py`. 
 2. Secondely,run `python train.py --save model_name`  
@@ -100,6 +106,9 @@ All parameters are commented in the file `config.py`.
 in the browser through `tensorboard --logdir ./output/model_name`. 
 ---   
 ### 3) Testing 3DUNet
+Note that When testing, we need to change ResUNet.py lines between 134 and 164 under folder 'models', change nn.Upsample(scale_factor=(1, 0.5x, 0.5x) to nn.Upsample(scale_factor=(1, x, x).
+The reason behind this is that the code was designed for two gpu, we assume you are using 1 gpu machine.
+
 run `test.py`  
 Please pay attention to path of trained model in `test.py`.   
 (Since the calculation of the 3D convolution operation is too large,
