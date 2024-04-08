@@ -1,0 +1,155 @@
+BACKBONE: !!python/object/new:easydict.EasyDict
+  dictitems:
+    CHANNELS: &id001
+    - 32
+    - 32
+    - 64
+    - 128
+    - 256
+    - 256
+    - 128
+    - 96
+    - 96
+    INPUT_DIM: 4
+    KNN_UP: 3
+    RESOLUTION: 0.05
+  state:
+    CHANNELS: *id001
+    INPUT_DIM: 4
+    KNN_UP: 3
+    RESOLUTION: 0.05
+DECODER: !!python/object/new:easydict.EasyDict
+  dictitems:
+    DEC_BLOCKS: 3
+    DIM_FFN: 1024
+    FEATURE_LEVELS: 3
+    HIDDEN_DIM: 256
+    NHEADS: 8
+    NUM_QUERIES: 100
+    POS_ENC: &id002 !!python/object/new:easydict.EasyDict
+      dictitems:
+        BASE: 2
+        DIMENSIONALITY: 3
+        MAX_FREQ: 10000
+      state:
+        BASE: 2
+        DIMENSIONALITY: 3
+        MAX_FREQ: 10000
+  state:
+    DEC_BLOCKS: 3
+    DIM_FFN: 1024
+    FEATURE_LEVELS: 3
+    HIDDEN_DIM: 256
+    NHEADS: 8
+    NUM_QUERIES: 100
+    POS_ENC: *id002
+EXPERIMENT: !!python/object/new:easydict.EasyDict
+  dictitems:
+    ID: mask_pls
+  state:
+    ID: mask_pls
+KITTI: !!python/object/new:easydict.EasyDict
+  dictitems:
+    CONFIG: /home2/student/MaskPLS/mask_pls/datasets/semantic-kitti.yaml
+    IGNORE_LABEL: 0
+    MIN_POINTS: 10
+    NUM_CLASSES: 20
+    PATH: /home2/student/2DPASS/dataset/
+    SPACE: &id003
+    - - -48.0
+      - 48.0
+    - - -48.0
+      - 48.0
+    - - -4.0
+      - 1.5
+    SUB_NUM_POINTS: 80000
+  state:
+    CONFIG: /home2/student/MaskPLS/mask_pls/datasets/semantic-kitti.yaml
+    IGNORE_LABEL: 0
+    MIN_POINTS: 10
+    NUM_CLASSES: 20
+    PATH: /home2/student/2DPASS/dataset/
+    SPACE: *id003
+    SUB_NUM_POINTS: 80000
+LOSS: !!python/object/new:easydict.EasyDict
+  dictitems:
+    EOS_COEF: 0.1
+    NUM_MASK_PTS: 500
+    NUM_POINTS: 50000
+    P_RATIO: 0.4
+    SEM: &id005 !!python/object/new:easydict.EasyDict
+      dictitems:
+        WEIGHTS: &id004
+        - 2
+        - 6
+      state:
+        WEIGHTS: *id004
+    WEIGHTS: &id006
+    - 2.0
+    - 5.0
+    - 5.0
+    WEIGHTS_KEYS: &id007
+    - loss_ce
+    - loss_dice
+    - loss_mask
+  state:
+    EOS_COEF: 0.1
+    NUM_MASK_PTS: 500
+    NUM_POINTS: 50000
+    P_RATIO: 0.4
+    SEM: *id005
+    WEIGHTS: *id006
+    WEIGHTS_KEYS: *id007
+MODEL: !!python/object/new:easydict.EasyDict
+  dictitems:
+    DATASET: KITTI
+    OVERLAP_THRESHOLD: 0.8
+  state:
+    DATASET: KITTI
+    OVERLAP_THRESHOLD: 0.8
+NUSCENES: !!python/object/new:easydict.EasyDict
+  dictitems:
+    CONFIG: datasets/semantic-nuscenes.yaml
+    IGNORE_LABEL: 0
+    MIN_POINTS: 10
+    NUM_CLASSES: 17
+    PATH: data/nuscenes
+    SPACE: &id008
+    - - -50.0
+      - 50.0
+    - - -50.0
+      - 50.0
+    - - -5.0
+      - 3
+    SUB_NUM_POINTS: 50000
+  state:
+    CONFIG: datasets/semantic-nuscenes.yaml
+    IGNORE_LABEL: 0
+    MIN_POINTS: 10
+    NUM_CLASSES: 17
+    PATH: data/nuscenes
+    SPACE: *id008
+    SUB_NUM_POINTS: 50000
+TRAIN: !!python/object/new:easydict.EasyDict
+  dictitems:
+    AUG: true
+    BATCH_ACC: 4
+    BATCH_SIZE: 1
+    DECAY: 0.1
+    LR: 0.0001
+    MAX_EPOCH: 100
+    NUM_WORKERS: 6
+    N_GPUS: -1
+    STEP: 80
+    SUBSAMPLE: true
+  state:
+    AUG: true
+    BATCH_ACC: 4
+    BATCH_SIZE: 1
+    DECAY: 0.1
+    LR: 0.0001
+    MAX_EPOCH: 100
+    NUM_WORKERS: 6
+    N_GPUS: -1
+    STEP: 80
+    SUBSAMPLE: true
