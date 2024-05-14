@@ -1,26 +1,29 @@
 # Reproduce Setup
 GitHub link:
+
 https://github.com/astra-vision/LMSCNet
 
-dataset:
-/home2/tmp/kiran/2DPASS/
-/home2/tmp/kiran/2DPASS/dataset
+configuration can be changed under:
 
 SSC_configs/config_routine.py
 
 link:
+
 https://www.rocq.inria.fr/rits_files/computer-vision/lmscnet/semanticKITTI_v1.1_dscale.zip
 /home/student/semantic_scene/LMSCNet
 
 data preprocess
+
 python LMSCNet/data/labels_downscale.py --dset_root /home2/tmp/kiran/2DPASS/
 
 training
+
 python LMSCNet/train.py --cfg SSC_configs/examples/LMSCNet.yaml --dset_root /home2/tmp/kiran/2DPASS/
 
 the model will be saved under /home/student/semantic_scene/SSC_out, the parameter setting is in /home/student/semantic_scene/LMSCNet/SSC_configs
 
 validate
+
 python LMSCNet/validate.py --weights ../LMSCNet.pth --dset_root /home2/tmp/kiran/2DPASS/
 
 
