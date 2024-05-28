@@ -27,7 +27,7 @@ After downloading the calibration and label data and extracting from the zip fil
 
 In the end your ```dataset``` folders from ``00`` to ``10`` should look like this (copied from the original repo):
 ```sh
-DATAROOT
+dataset
 └── sequences
     ├── 00
     │   ├── poses.txt
@@ -47,7 +47,7 @@ Next, run ```python utils/create_center_label.py``` to generate additional label
 
 Final dataset folder structure:
 ```sh
-DATAROOT
+dataset
 ├── semantic-kitti.yaml
 └── sequences
     └── 00
