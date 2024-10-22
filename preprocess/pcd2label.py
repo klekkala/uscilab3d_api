@@ -45,6 +45,7 @@ def write_labels(comb, output_file_path):
             # Write the packed bytes to the file
             file.write(packed_bytes)
 
+# edit this part according to your configuration
 seq_id = 0
 folder_name = "2023_07_11"
 pcd_path = "/lab/tmpig10c/NIPS_DATA/"+folder_name+"/"
