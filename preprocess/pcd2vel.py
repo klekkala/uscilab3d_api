@@ -20,6 +20,8 @@ def write_bin_file(coord,intensity,file_name):
     # Write the numpy array to a binary file
     write_float_to_binary_file(merged_array, file_name)
 
+# edit this part according to your configuration
+
 seq_id = 0
 folder_name = "2023_07_11"
 pcd_path = "/lab/tmpig10c/NIPS_DATA/"+folder_name+"/"
